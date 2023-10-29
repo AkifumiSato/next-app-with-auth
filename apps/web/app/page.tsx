@@ -1,7 +1,9 @@
+import { Title } from "ui";
+
 export default function Page(): JSX.Element {
   return (
     <main>
-      <h1>Top page</h1>
+      <Title>Top page</Title>
     </main>
   );
 }

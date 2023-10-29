@@ -35,5 +35,6 @@ module.exports = {
 
   rules: {
     // add specific rules configurations here
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
   },
 };
