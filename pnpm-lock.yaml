@@ -26,6 +26,9 @@ importers:
 
   apps/web:
     dependencies:
+      destyle.css:
+        specifier: 4.0.0
+        version: 4.0.0
       next:
         specifier: 13.5.6
         version: 13.5.6(react-dom@18.2.0)(react@18.2.0)
@@ -1560,6 +1563,10 @@ packages:
       rimraf: 3.0.2
       slash: 3.0.0
     dev: true
+
+  /destyle.css@4.0.0:
+    resolution: {integrity: sha512-yE2SpDRZdqfEZRkYSIxSWSuh4Higsm01VinAWC3hny9DDV+NjBARpCEqf6TLDTWka1I7pu4bDJ68aF1WjLPKUw==}
+    dev: false
 
   /detect-indent@7.0.1:
     resolution: {integrity: sha512-Mc7QhQ8s+cLrnUfU/Ji94vG/r8M26m8f++vyres4ZoojaRDpZ1eSIh/EpzLNwlWuvzSZ3UbDFspjFvTDXe6e/g==}
