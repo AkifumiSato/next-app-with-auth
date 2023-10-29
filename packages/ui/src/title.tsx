@@ -5,5 +5,5 @@ type Props = {
 };
 
 export function Title({ children }: Props): React.JSX.Element {
-  return <h1 className="text-xl font-bold">{children}</h1>;
+  return <h1 className="text-3xl font-bold">{children}</h1>;
 }

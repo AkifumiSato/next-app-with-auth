@@ -2,6 +2,7 @@ import "destyle.css";
 import "ui/index.css";
 import type { Metadata } from "next";
 import type { JSX } from "react";
+import { PageLayout } from "ui";
 
 export const metadata: Metadata = {
   title: "Create Turborepo",
@@ -15,7 +16,9 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <PageLayout>{children}</PageLayout>
+      </body>
     </html>
   );
 }

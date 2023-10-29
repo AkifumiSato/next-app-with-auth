@@ -1,9 +1,10 @@
-import { Title } from "ui";
+import { Section, Title } from "ui";
 
 export default function Page(): JSX.Element {
   return (
-    <main>
-      <Title>Top page</Title>
-    </main>
+    <Section>
+      <Title>Next app with auth</Title>
+      <p>todo: login form</p>
+    </Section>
   );
 }
