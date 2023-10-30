@@ -1,10 +1,12 @@
+import React from "react";
 import { Section, Title } from "ui";
+import { LoginForm } from "./login-form";
 
-export default function Page(): JSX.Element {
+export default function Page(): React.JSX.Element {
   return (
     <Section>
       <Title>Next app with auth</Title>
-      <p>todo: login form</p>
+      <LoginForm />
     </Section>
   );
 }
