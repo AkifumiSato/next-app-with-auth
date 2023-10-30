@@ -1,7 +1,5 @@
 import "./input.css";
 
-export * from "./title";
-
-export * from "./page-layout";
-
-export * from "./section";
+export * from "./components/title";
+export * from "./components/page-layout";
+export * from "./components/section";
