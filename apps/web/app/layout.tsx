@@ -1,5 +1,5 @@
 import "destyle.css";
-import "ui/index.css";
+import "./input.css";
 import type { Metadata } from "next";
 import type { JSX } from "react";
 import { PageLayout } from "ui";
