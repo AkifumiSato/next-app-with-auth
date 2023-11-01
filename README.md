@@ -17,6 +17,7 @@ $ pnpm run dev
 │  └── web
 └── packages
    ├── eslint-config-custom
+   ├── server
    ├── tsconfig
    └── ui
 ```
