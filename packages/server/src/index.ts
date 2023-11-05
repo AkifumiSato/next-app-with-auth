@@ -44,7 +44,7 @@ export function createAuthServer({
       !request.session.user
     ) {
       // todo: 認証エラーページを作成
-      reply.status(401).send("Unauthorized!");
+      reply.status(401).send("Unauthorized");
     }
   });
 

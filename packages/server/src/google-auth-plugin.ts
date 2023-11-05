@@ -61,8 +61,7 @@ const googleAuthPluginCallback: FastifyPluginAsync<{
         },
       },
     );
-    const user = await userResponse.json();
-    request.session.user = user;
+    request.session.user = await userResponse.json();
     await request.session.save();
     reply.redirect("/user");
   });
