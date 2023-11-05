@@ -1,4 +1,4 @@
-import { getServer } from "server";
+import { createServer } from "server";
 import next from "next";
 
 const PORT = 3000;
@@ -10,10 +10,18 @@ const handle = app.getRequestHandler();
 
 await app.prepare();
 
-const server = getServer();
+const server = createServer({
+  serveOrigin: "http://localhost:3000",
+  oauth: {
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    },
+  },
+});
 
 // redirecting all requests to Next.js
-server.all("*", (req, res) => handle(req.raw, res.raw));
+server.all("*", (req, reply) => handle(req.raw, reply.raw));
 
 server.setNotFoundHandler((req, reply) => app.render404(req.raw, reply.raw));
 

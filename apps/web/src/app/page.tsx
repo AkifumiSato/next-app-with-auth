@@ -9,6 +9,9 @@ export default function Page(): React.JSX.Element {
       <article className="prose">
         <ul>
           <li>
+            <a href="/login/google">google login</a>
+          </li>
+          <li>
             <Link href="/user">user page</Link>
           </li>
         </ul>
