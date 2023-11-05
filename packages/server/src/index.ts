@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import fastifyCookie from "@fastify/cookie";
+import fastifySession from "@fastify/session";
 import oauthPlugin, { OAuth2Namespace } from "@fastify/oauth2";
 
 // @fastify/oauth2のdeclareが効かないのでpatch
@@ -9,8 +10,21 @@ declare module "fastify" {
   }
 }
 
+// session type declare
+declare module "@fastify/session" {
+  interface FastifySessionObject {
+    user: {
+      id: string;
+      name: string;
+      email: string;
+      picture: string;
+    };
+  }
+}
+
 export type ServeOption = {
   serveOrigin: string;
+  sessionSecret: string;
   oauth: {
     google: {
       clientId: string;
@@ -19,7 +33,11 @@ export type ServeOption = {
   };
 };
 
-export function createServer({ serveOrigin, oauth: { google } }: ServeOption) {
+export function createServer({
+  serveOrigin,
+  sessionSecret,
+  oauth: { google },
+}: ServeOption) {
   const fastify = Fastify({
     logger: true,
   });
@@ -29,7 +47,10 @@ export function createServer({ serveOrigin, oauth: { google } }: ServeOption) {
   }));
 
   fastify.register(fastifyCookie);
-
+  fastify.register(fastifySession, {
+    cookieName: "sessionId",
+    secret: sessionSecret,
+  });
   fastify.register(oauthPlugin, {
     name: "googleOAuth2",
     scope: ["profile", "email"],
@@ -66,9 +87,17 @@ export function createServer({ serveOrigin, oauth: { google } }: ServeOption) {
       },
     );
     const user = await userResponse.json();
-    // todo: Sessionに格納する
-    fastify.log.info({ user });
+    request.session.user = user;
+    await request.session.save();
     reply.redirect("/user");
+  });
+
+  // todo: 認証パス(/user)チェックを作成後削除
+  fastify.get("/debug/session", async function (request, reply) {
+    const { user } = request.session;
+    reply.send({
+      user,
+    });
   });
 
   return fastify;

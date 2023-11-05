@@ -108,6 +108,9 @@ importers:
       '@fastify/oauth2':
         specifier: 7.5.0
         version: 7.5.0
+      '@fastify/session':
+        specifier: 10.5.0
+        version: 10.5.0
       fastify:
         specifier: 4.24.3
         version: 4.24.3
@@ -668,6 +671,13 @@ packages:
       simple-oauth2: 5.0.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@fastify/session@10.5.0:
+    resolution: {integrity: sha512-2oXXSQ4Yy6pzLgbBoooblgHJ55DYqyxSLoKMq2CGmDZI2WPMrOIvN1bJbllWuUuCe7luPdQju3RJTRvNMW+j/g==}
+    dependencies:
+      fastify-plugin: 4.5.1
+      safe-stable-stringify: 2.4.3
     dev: false
 
   /@hapi/boom@10.0.1:

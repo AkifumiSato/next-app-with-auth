@@ -12,6 +12,7 @@ await app.prepare();
 
 const server = createServer({
   serveOrigin: "http://localhost:3000",
+  sessionSecret: process.env.SESSION_SECRET,
   oauth: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
