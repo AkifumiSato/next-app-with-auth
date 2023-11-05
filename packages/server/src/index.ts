@@ -1,11 +1,11 @@
-import express, { Express } from "express";
+import Fastify from "fastify";
 
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const fastify = Fastify({
+  logger: true,
+});
 
 //一覧取得
-app.get("/health_check", (req: express.Request, res: express.Response) => {
+fastify.get("/health_check", (req, res) => {
   res.send(
     JSON.stringify({
       status: "OK",
@@ -13,6 +13,6 @@ app.get("/health_check", (req: express.Request, res: express.Response) => {
   );
 });
 
-export function getServer(): Express {
-  return app;
+export function getServer() {
+  return fastify;
 }
