@@ -66,13 +66,6 @@ const googleAuthPluginCallback: FastifyPluginAsync<{
     await request.session.save();
     reply.redirect("/user");
   });
-
-  fastify.addHook("preHandler", async (request, reply) => {
-    if (request.url.indexOf("/user") === 0 && !request.session.user) {
-      // todo: 認証エラーページを作成
-      reply.status(401).send("Unauthorized!");
-    }
-  });
 };
 
 export const googleAuthPlugin = fp(googleAuthPluginCallback);
