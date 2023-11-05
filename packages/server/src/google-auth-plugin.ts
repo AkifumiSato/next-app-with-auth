@@ -67,12 +67,11 @@ const googleAuthPluginCallback: FastifyPluginAsync<{
     reply.redirect("/user");
   });
 
-  // todo: 認証パス(/user)チェックを作成後削除
-  fastify.get("/debug/session", async function (request, reply) {
-    const { user } = request.session;
-    reply.send({
-      user,
-    });
+  fastify.addHook("preHandler", async (request, reply) => {
+    if (request.url.indexOf("/user") === 0 && !request.session.user) {
+      // todo: 認証エラーページを作成
+      reply.status(401).send("Unauthorized!");
+    }
   });
 };
 
