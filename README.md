@@ -17,7 +17,7 @@ $ pnpm run dev
 │  └── web
 └── packages
    ├── eslint-config-custom
-   ├── server
+   ├── auth-server
    ├── tsconfig
    └── ui
 ```

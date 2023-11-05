@@ -15,7 +15,7 @@ export type ServeOption = {
   };
 };
 
-export function createServer({
+export function createAuthServer({
   serveOrigin,
   sessionSecret,
   oauth: { google },
