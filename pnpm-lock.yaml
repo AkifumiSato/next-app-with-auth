@@ -31,7 +31,7 @@ importers:
     dependencies:
       auth-server:
         specifier: workspace:*
-        version: link:../../packages/server
+        version: link:../../packages/auth-server
       destyle.css:
         specifier: 4.0.0
         version: 4.0.0
@@ -88,19 +88,7 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
 
-  packages/eslint-config-custom:
-    devDependencies:
-      '@vercel/style-guide':
-        specifier: 5.0.1
-        version: 5.0.1(eslint@8.52.0)(prettier@3.0.3)(typescript@5.2.2)
-      eslint-config-turbo:
-        specifier: 1.10.16
-        version: 1.10.16(eslint@8.52.0)
-      typescript:
-        specifier: 5.2.2
-        version: 5.2.2
-
-  packages/server:
+  packages/auth-server:
     dependencies:
       '@fastify/cookie':
         specifier: 9.1.0
@@ -124,6 +112,18 @@ importers:
       tsup:
         specifier: 7.2.0
         version: 7.2.0(typescript@5.2.2)
+      typescript:
+        specifier: 5.2.2
+        version: 5.2.2
+
+  packages/eslint-config-custom:
+    devDependencies:
+      '@vercel/style-guide':
+        specifier: 5.0.1
+        version: 5.0.1(eslint@8.52.0)(prettier@3.0.3)(typescript@5.2.2)
+      eslint-config-turbo:
+        specifier: 1.10.16
+        version: 1.10.16(eslint@8.52.0)
       typescript:
         specifier: 5.2.2
         version: 5.2.2
