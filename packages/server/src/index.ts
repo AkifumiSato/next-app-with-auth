@@ -50,3 +50,5 @@ export function createAuthServer({
 
   return fastify;
 }
+
+export type { Session } from "./session";

@@ -1,6 +1,7 @@
 import oauthPlugin, { OAuth2Namespace } from "@fastify/oauth2";
 import { FastifyPluginAsync } from "fastify";
 import fp from "fastify-plugin";
+import { Session, sessionStore } from "./session";
 
 // @fastify/oauth2のdeclareが効かないのでpatch
 declare module "fastify" {
@@ -11,14 +12,7 @@ declare module "fastify" {
 
 // session type declare
 declare module "@fastify/session" {
-  interface FastifySessionObject {
-    user: {
-      id: string;
-      name: string;
-      email: string;
-      picture: string;
-    };
-  }
+  interface FastifySessionObject extends Session {}
 }
 
 const googleAuthPluginCallback: FastifyPluginAsync<{
@@ -64,6 +58,10 @@ const googleAuthPluginCallback: FastifyPluginAsync<{
     request.session.user = await userResponse.json();
     await request.session.save();
     reply.redirect("/user");
+  });
+
+  fastify.addHook("onRequest", (request, reply, done) => {
+    sessionStore.run(request.session, done);
   });
 };
 
