@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development node server.mjs | pino-pretty",
+    "dev": "NODE_ENV=development auth-server | pino-pretty",
     "build": "next build",
-    "start": "NODE_ENV=production node server.mjs",
+    "start": "NODE_ENV=production auth-server",
     "lint": "next lint"
   },
   "dependencies": {

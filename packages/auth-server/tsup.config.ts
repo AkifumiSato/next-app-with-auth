@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  target: "es2020",
+  target: "es2022",
   format: ["esm"],
   clean: true,
   // CI上ではdts生成より先にbuildが進んでしまうため、以下のissue解消後有効化

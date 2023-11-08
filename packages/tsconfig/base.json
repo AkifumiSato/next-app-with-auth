@@ -10,6 +10,8 @@
     "inlineSources": false,
     "isolatedModules": true,
     "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es2022",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "preserveWatchOutput": true,

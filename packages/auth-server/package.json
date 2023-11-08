@@ -5,11 +5,15 @@
   "license": "MIT",
   "main": "dist/index.mjs",
   "types": "./src/index.ts",
+  "bin": {
+    "auth-server": "./dist/index.mjs"
+  },
   "scripts": {
     "type": "tsc --noEmit",
     "build": "tsup src/index.ts"
   },
   "devDependencies": {
+    "next": "13.5.6",
     "tsconfig": "workspace:*",
     "tsup": "7.2.0",
     "typescript": "5.2.2"
@@ -20,5 +24,8 @@
     "@fastify/session": "10.5.0",
     "fastify": "4.24.3",
     "fastify-plugin": "4.5.1"
+  },
+  "peerDependencies": {
+    "next": "^13.5.6"
   }
 }
