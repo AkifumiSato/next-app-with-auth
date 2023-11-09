@@ -1,18 +1,14 @@
 import Fastify from "fastify";
+import next from "next";
 import fastifyCookie from "@fastify/cookie";
 import fastifySession from "@fastify/session";
 import { googleAuthPlugin } from "./google-auth-plugin";
 import { healthCheckPlugin } from "./health-check-plugin";
 
-import next from "next";
-
-const PORT = 3000;
-const DEV = process.env.NODE_ENV !== "production";
-
-const app = next({ dev: DEV });
-const handle = app.getRequestHandler();
-
-await app.prepare();
+// prepare next app
+const nextApp = next({ dev: process.env.NODE_ENV !== "production" });
+const nextHandle = nextApp.getRequestHandler();
+await nextApp.prepare();
 
 // todo: validation
 const envSettings = {
@@ -52,10 +48,13 @@ fastify.addHook("preHandler", async (request, reply) => {
   }
 });
 
-fastify.all("*", (req, reply) => handle(req.raw, reply.raw));
+fastify.all("*", (req, reply) => nextHandle(req.raw, reply.raw));
 
-fastify.setNotFoundHandler((req, reply) => app.render404(req.raw, reply.raw));
+fastify.setNotFoundHandler((req, reply) =>
+  nextApp.render404(req.raw, reply.raw),
+);
 
+const PORT = 3000;
 try {
   await fastify.listen({ port: PORT });
 } catch (err) {
